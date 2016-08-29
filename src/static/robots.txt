@@ -1,0 +1,4 @@
+# robotstxt.org
+
+Sitemap: https://www.antlos.com/sitemap.xml
+User-agent: *

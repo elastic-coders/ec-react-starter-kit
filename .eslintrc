@@ -1,0 +1,30 @@
+{
+    "parser": "babel-eslint",
+    "ecmaFeatures": {
+      "jsx": true,
+      "modules": true
+    },
+    "env": {
+        "node": true,
+        "browser": true,
+        "es6": true
+    },
+    "rules": {
+        // Strict mode
+        "strict": [2, "never"],
+
+        // Code style
+        "indent": [2, 2],
+        "quotes": [2, "single"],
+        "new-cap": 0,
+        "func-names": 0,
+        "no-use-before-define": [2, "nofunc"],
+        "space-in-parens": [2, "never"],
+        "comma-dangle": ["error", "always-multiline"],
+
+        // React
+        "react/jsx-uses-react": 2,
+        "react/jsx-uses-vars": 2,
+        "react/react-in-jsx-scope": 2
+    }
+}
