@@ -2,7 +2,7 @@
   "name": "ec-react-starter-kit",
   "private": true,
   "version": "0.1.0",
-  "ec-tools": {
+  "ecTools": {
     "clean": ["./dist/*"],
     "copy": {
         "./src/static": "./dist/static"
