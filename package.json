@@ -57,7 +57,7 @@
     "tar-fs": "1.13.2",
     "webpack": "^1.12.2",
     "webpack-dev-server": "^1.12.1",
-    "ec-node-tools": "0.1.0"
+    "ec-node-tools": "0.2.0"
   },
   "dependencies": {
     "auth0-lock": "10.2.1",
