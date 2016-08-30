@@ -2,16 +2,28 @@
   "name": "ec-react-starter-kit",
   "private": true,
   "version": "0.1.0",
+  "ec-tools": {
+    "clean": ["./dist/*"],
+    "copy": {
+        "./src/static": "./dist/static"
+    },
+    "copyPackage": {
+        "scripts": {
+            "start": "node ./server"
+        }
+    }
+  },
+  "main": "dist/server.js",
   "scripts": {
-    "start": "babel-node --eval \"require('./tools/get-args')().then(require('./tools/start')).catch(err => console.error(err.stack))\"",
+    "start": "ec-tools serve devProxy",
     "lint": "eslint .",
     "test": "istanbul cover _mocha **/*.test.js -- -R spec --recursive",
     "devtool": "npm run build && devtool -r ./dist/server.js",
-    "clean": "babel-node --eval \"require('./tools/get-args')().then(require('./tools/clean')).catch(err => console.error(err.stack))\"",
-    "copy": "babel-node --eval \"require('./tools/get-args')().then(require('./tools/copy')).catch(err => console.error(err.stack))\"",
-    "bundle": "babel-node --eval \"require('./tools/get-args')().then(require('./tools/bundle')).catch(err => console.error(err.stack))\"",
-    "build": "babel-node --eval \"require('./tools/get-args')().then(require('./tools/build')).catch(err => console.error(err.stack))\"",
-    "image": "babel-node --eval \"require('./tools/get-args')().then(require('./tools/image')).catch(err => console.error(err.stack))\""
+    "clean": "ec-tools clean",
+    "copy": "ec-tools copy",
+    "bundle": "ec-tools bundle",
+    "build": "ec-tools build",
+    "image": "ec-tools image"
   },
   "author": "Nicola Peduzzi <thenikso@gmail.com> (http://nikso.net)",
   "license": "MIT",
@@ -44,7 +56,8 @@
     "style-loader": "0.13.1",
     "tar-fs": "1.13.2",
     "webpack": "^1.12.2",
-    "webpack-dev-server": "^1.12.1"
+    "webpack-dev-server": "^1.12.1",
+    "ec-node-tools": "0.1.0"
   },
   "dependencies": {
     "auth0-lock": "10.2.1",
