@@ -36,7 +36,7 @@ export default class App extends PureComponent {
         <button onClick={() => this.props.onFetchThings('yes!').then(() => console.log('yep it\'s a promise'))}>
           Fetched things: {this.props.things}
         </button>
-        {this.props.route.auth.loggedIn() && (
+        {this.props.route && this.props.route.auth.loggedIn() && (
           <button onClick={this.logout.bind(this)}>Logout</button>
         )}
         {children}

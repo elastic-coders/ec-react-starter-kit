@@ -1,0 +1,23 @@
+exports[`test renders things 1`] = `
+<div>
+  <h1
+    className="title">
+    Hello, world!
+  </h1>
+  <a
+    onClick={[Function bound handleClick]}
+    style={Object {}}>
+    login
+  </a>
+  <a
+    onClick={[Function bound handleClick]}
+    style={Object {}}>
+    private
+  </a>
+  <button
+    onClick={[Function onClick]}>
+    Fetched things: 
+    something
+  </button>
+</div>
+`;
