@@ -30,6 +30,7 @@ const client = {
   output: {
     path: distPublic,
     filename: 'client.js',
+    publicPath: '/public/'
   },
   vendorsChunkPlugin,
   plugins: [

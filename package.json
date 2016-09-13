@@ -17,7 +17,7 @@
   },
   "main": "dist/server.js",
   "scripts": {
-    "start": "ec-tools serve devProxy",
+    "start": "ec-tools serve devProxy watch",
     "lint": "eslint .",
     "test": "jest --coverage",
     "devtool": "npm run build && devtool -r ./dist/server.js",
