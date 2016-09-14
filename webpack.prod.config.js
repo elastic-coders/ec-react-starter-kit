@@ -10,6 +10,9 @@ const client = Object.assign({}, baseConfig[0], {
   ],
   devtool: 'cheap-module-source-map',
   plugins: [
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify('production'),
+    }),
     baseConfig[0].vendorsChunkPlugin,
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.UglifyJsPlugin({
@@ -39,15 +42,15 @@ const client = Object.assign({}, baseConfig[0], {
 const server = Object.assign({}, baseConfig[1], {
   devtool: 'cheap-source-map',
   plugins: [
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify('production'),
+    }),
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.optimize.UglifyJsPlugin({
       compressor: {
         warnings: false,
         screw_ie8: true,
       },
-    }),
-    new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
     }),
   ],
 });
