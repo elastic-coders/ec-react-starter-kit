@@ -1,4 +1,8 @@
 {
-  "plugins": ["add-module-exports", "transform-decorators-legacy"],
+  "plugins": [
+    "add-module-exports",
+    "transform-decorators-legacy",
+    "babel-root-import"
+  ],
   "presets": ["es2015", "stage-0", "react"]
 }

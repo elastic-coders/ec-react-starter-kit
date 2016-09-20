@@ -28,7 +28,9 @@
     "image": "ec-tools image"
   },
   "jest": {
-    "moduleDirectories": ["node_modules"],
+    "moduleDirectories": [
+      "node_modules"
+    ],
     "moduleNameMapper": {
       "^.+\\.s?css$": "<rootDir>/src/__mocks__/styles.mock.js"
     }
@@ -48,6 +50,7 @@
     "babel-preset-es2015": "^6.0.15",
     "babel-preset-react": "^6.0.15",
     "babel-preset-stage-0": "^6.0.15",
+    "babel-root-import": "4.1.3",
     "css-loader": "0.24.0",
     "cssnano": "3.7.4",
     "dockerode": "2.3.0",
