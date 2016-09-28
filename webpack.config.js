@@ -20,6 +20,7 @@ const client = {
   entry: [
     'webpack-dev-server/client?http://localhost:9000',
     'webpack/hot/only-dev-server',
+    'react-hot-loader/patch',
     'babel-polyfill',
     './src/client/client',
   ],
@@ -42,7 +43,7 @@ const client = {
       {
         test: /\.js$/,
         include: [src],
-        loaders: ['react-hot', 'babel'],
+        loaders: ['babel'],
       },
       {
         test: /\.css$/, // Might need to exclude bootstrap
