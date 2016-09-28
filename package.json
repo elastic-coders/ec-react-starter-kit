@@ -19,7 +19,7 @@
   "scripts": {
     "start": "ec-tools serve devProxy watch",
     "lint": "eslint .",
-    "test": "jest --coverage",
+    "test": "jest --coverage src",
     "devtool": "npm run build && devtool -r ./dist/server.js",
     "clean": "ec-tools clean",
     "copy": "ec-tools copy",
