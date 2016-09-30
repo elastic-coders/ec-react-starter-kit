@@ -4,20 +4,33 @@ exports[`test renders things 1`] = `
     className="title">
     Hello, world!
   </h1>
-  <a
-    onClick={[Function bound handleClick]}
-    style={Object {}}>
-    login
-  </a>
-  <a
-    onClick={[Function bound handleClick]}
-    style={Object {}}>
-    private
-  </a>
-  <button
-    onClick={[Function onClick]}>
-    Fetched things: 
-    something
-  </button>
+  <ul>
+    <li>
+      <a
+        onClick={[Function bound handleClick]}
+        style={Object {}}>
+        login
+      </a>
+    </li>
+    <li>
+      <a
+        onClick={[Function bound handleClick]}
+        style={Object {}}>
+        private
+      </a>
+    </li>
+  </ul>
+  <div>
+    <button
+      disabled={undefined}
+      onClick={[Function onClick]}>
+      FETCH THINGS
+    </button>
+    <span>
+       Fetched things: 
+      something
+    </span>
+  </div>
+  <div />
 </div>
 `;

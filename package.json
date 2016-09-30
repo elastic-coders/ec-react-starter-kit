@@ -19,7 +19,8 @@
   "scripts": {
     "start": "ec-tools serve devProxy watch",
     "lint": "eslint .",
-    "test": "jest --coverage '/src/'",
+    "test": "jest --coverage --testPathPattern='/src/'",
+    "test:snapshot": "jest -u --testPathPattern='/src/'",
     "devtool": "npm run build && devtool -r ./dist/server.js",
     "clean": "ec-tools clean",
     "copy": "ec-tools copy",
