@@ -25,7 +25,7 @@
     "copy": "ec-tools copy",
     "bundle": "ec-tools bundle",
     "build": "ec-tools build",
-    "image": "ec-tools image"
+    "image": "ec-tools image config:webpack.prod.config.js"
   },
   "jest": {
     "moduleDirectories": [
