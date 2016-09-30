@@ -2,7 +2,7 @@ import { createStore, compose, applyMiddleware } from 'redux';
 import { routerMiddleware } from 'react-router-redux';
 import { createEpicMiddleware } from 'redux-observable';
 import reduxLogger from 'redux-logger';
-import rootEpic from '../epics';
+import rootEpic from './epics';
 import rootReducer from './reducers';
 
 const epicMiddleware = createEpicMiddleware(rootEpic);
