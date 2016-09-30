@@ -2,13 +2,12 @@ FROM mhart/alpine-node:4.3
 
 ENV NODE_ENV production
 
-RUN mkdir -p /usr/app
+RUN adduser -D -h /usr/app -S app
 WORKDIR /usr/app
 
-RUN adduser -D -h /usr/app -S -H app
-
-COPY dist /usr/app
+COPY dist/package.json /usr/app/package.json
 RUN npm install
+COPY dist /usr/app
 
 USER app
 EXPOSE 5000

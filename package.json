@@ -39,6 +39,7 @@
   "author": "Nicola Peduzzi <thenikso@gmail.com> (http://nikso.net)",
   "license": "MIT",
   "devDependencies": {
+    "auth0-lock": "10.2.1",
     "JSONStream": "1.1.4",
     "autoprefixer": "6.4.0",
     "babel-cli": "6.14.0",
@@ -55,7 +56,7 @@
     "css-loader": "0.24.0",
     "cssnano": "3.7.4",
     "dockerode": "2.3.0",
-    "ec-node-tools": "0.2.2",
+    "ec-node-tools": "0.3.1",
     "eslint": "^1.10.3",
     "eslint-plugin-react": "^3.6.2",
     "fs-extra-promise": "0.4.0",
@@ -68,7 +69,7 @@
     "postcss-loader": "0.11.0",
     "precss": "1.4.0",
     "react-hot-loader": "3.0.0-beta.5",
-    "react-test-renderer": "15.3.1",
+    "react-test-renderer": "15.3.2",
     "redux-logger": "2.6.1",
     "style-loader": "0.13.1",
     "tar-fs": "1.13.2",
@@ -76,21 +77,21 @@
     "webpack-dev-server": "^1.12.1"
   },
   "dependencies": {
-    "auth0-lock": "10.2.1",
     "babel-polyfill": "6.13.0",
     "colors": "1.1.2",
     "compression": "1.6.2",
     "express": "4.14.0",
     "jwt-decode": "2.1.0",
     "morgan": "1.7.0",
-    "react": "15.3.1",
-    "react-dom": "15.3.1",
+    "react": "15.3.2",
+    "react-dom": "15.3.2",
     "react-redux": "4.4.5",
     "react-router": "2.7.0",
     "react-router-redux": "4.0.5",
     "redux": "3.6.0",
     "redux-actions": "0.11.0",
     "redux-observable": "0.12.0",
-    "rxjs": "5.0.0-beta.12"
+    "rxjs": "5.0.0-beta.12",
+    "webpack": "1.13.2"
   }
 }

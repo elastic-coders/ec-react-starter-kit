@@ -14,7 +14,6 @@ const client = Object.assign({}, baseConfig[0], {
       'process.env.NODE_ENV': JSON.stringify('production'),
     }),
     baseConfig[0].vendorsChunkPlugin,
-    new webpack.optimize.DedupePlugin(),
     new webpack.optimize.UglifyJsPlugin({
       minimize: true,
       comments: false,
