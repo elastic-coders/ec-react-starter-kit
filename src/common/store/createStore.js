@@ -1,13 +1,16 @@
 import { createStore, compose, applyMiddleware } from 'redux';
 import { routerMiddleware } from 'react-router-redux';
-import promiseMiddleware from 'redux-promise';
+import { createEpicMiddleware } from 'redux-observable';
 import reduxLogger from 'redux-logger';
+import rootEpic from '../epics';
 import rootReducer from './reducers';
+
+const epicMiddleware = createEpicMiddleware(rootEpic);
 
 export default (initialState, history) => {
   const create = compose(
     applyMiddleware(routerMiddleware(history)),
-    applyMiddleware(promiseMiddleware),
+    applyMiddleware(epicMiddleware),
     applyMiddleware(reduxLogger())
   )(createStore);
   const store = create(rootReducer, initialState);

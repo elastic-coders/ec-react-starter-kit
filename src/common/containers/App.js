@@ -9,6 +9,7 @@ import { fetchThings } from '../store/actions';
 
 @connect(state => ({
   things: state.test.thingsFetched,
+  loading: state.test.loading
 }), {
   onFetchThings: fetchThings,
   changePage: push,
@@ -16,6 +17,7 @@ import { fetchThings } from '../store/actions';
 export default class App extends PureComponent {
   static propTypes = {
     things: T.string,
+    loading: T.bool,
     onFetchThings: T.func,
     changePage: T.func,
   };
@@ -31,14 +33,21 @@ export default class App extends PureComponent {
     return (
       <div>
         <h1 className={styles.title}>Hello, world!</h1>
-        <Link to="/login">login</Link>
-        <Link to="/private">private</Link>
-        <button onClick={() => this.props.onFetchThings('yes!').then(() => console.log('yep it\'s a promise'))}>
-          Fetched things: {this.props.things}
-        </button>
-        {this.props.route && this.props.route.auth.loggedIn() && (
-          <button onClick={this.logout.bind(this)}>Logout</button>
-        )}
+        <ul>
+          <li><Link to="/login">login</Link></li>
+          <li><Link to="/private">private</Link></li>
+        </ul>
+        <div>
+          <button disabled={this.props.loading} onClick={() => this.props.onFetchThings('yes!')}>
+            {this.props.loading ? 'LOADING' : 'FETCH THINGS'}
+          </button>
+          <span> Fetched things: {this.props.things}</span>
+        </div>
+        <div>
+          {this.props.route && this.props.route.auth.loggedIn() && (
+            <button onClick={this.logout.bind(this)}>Logout</button>
+          )}
+        </div>
         {children}
       </div>
     );
