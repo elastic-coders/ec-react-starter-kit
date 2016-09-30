@@ -21,7 +21,7 @@ const rootElement = document.getElementById('root');
 ReactDOM.render(<Root store={store} history={history} auth={auth}/>, rootElement);
 
 if(module.hot) {
-  const AppContainer = require('react-hot-loader');
+  const AppContainer = require('react-hot-loader').AppContainer;
   module.hot.accept('./root', () => {
     const NewRoot = require('./root');
     ReactDOM.render(
