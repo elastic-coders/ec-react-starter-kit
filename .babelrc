@@ -2,7 +2,8 @@
   "plugins": [
     "add-module-exports",
     "transform-decorators-legacy",
-    "babel-root-import"
+    "babel-root-import",
+    "react-hot-loader/babel"
   ],
   "presets": ["es2015", "stage-0", "react"]
 }
