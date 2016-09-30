@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { browserHistory } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
-import { AppContainer } from 'react-hot-loader';
 
 import { AuthService, LocalStorageService } from '../common/services';
 import createStore from '../common/store/createStore';
@@ -22,6 +21,7 @@ const rootElement = document.getElementById('root');
 ReactDOM.render(<Root store={store} history={history} auth={auth}/>, rootElement);
 
 if(module.hot) {
+  const AppContainer = require('react-hot-loader');
   module.hot.accept('./root', () => {
     const NewRoot = require('./root');
     ReactDOM.render(
