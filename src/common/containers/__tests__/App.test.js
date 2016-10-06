@@ -1,6 +1,6 @@
 import React from 'react';
 import App from '../App';
-import renderer from 'react-test-renderer';
+import renderer from 'react-test-renderer'; // eslint-disable-line
 
 it('renders things', () => {
   const component = renderer.create(

@@ -1,4 +1,7 @@
-FROM mhart/alpine-node:4.3
+FROM mhart/alpine-node:6
+# Some npm packages might be installed directly from a source git repository
+RUN apk update && apk upgrade && \
+    apk add --no-cache git
 
 ENV NODE_ENV production
 

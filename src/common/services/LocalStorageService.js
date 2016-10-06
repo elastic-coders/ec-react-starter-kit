@@ -1,5 +1,21 @@
 let sharedLocalStorage;
 
+class BackupLocalStorage {
+  setItem(key, item) {
+    this[key] = item;
+  }
+
+  getItem(key) {
+    return this[key];
+  }
+
+  removeItem(key) {
+    if ({}.hasOwnProperty.call(this, key)) {
+      delete this[key];
+    }
+  }
+}
+
 export default class LocalStorageService {
   constructor(prefix) {
     this.prefix = prefix ? `${prefix}_` : '';
@@ -32,21 +48,5 @@ export default class LocalStorageService {
       sharedLocalStorage = new LocalStorageService();
     }
     return sharedLocalStorage;
-  }
-}
-
-class BackupLocalStorage {
-  setItem(key, item) {
-    this[key] = item;
-  }
-
-  getItem(key) {
-    return this[key];
-  }
-
-  removeItem(key) {
-    if (this.hasOwnProperty(key)) {
-      delete this[key];
-    }
   }
 }

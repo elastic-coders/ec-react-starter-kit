@@ -1,4 +1,4 @@
-export default (data) => `<!doctype html>
+export default data => `<!doctype html>
 <html>
   <head>
     <title>Sample App</title>
@@ -9,7 +9,7 @@ export default (data) => `<!doctype html>
     <div id='root'>
     </div>
     <script>
-    var __SERVER_CONFIG__ = ${JSON.stringify(data.configuration)};
+    var SERVER_CONFIG = ${JSON.stringify(data.configuration)};
     </script>
     <script src="/${data.version}/vendors.js"></script>
     <script src="/${data.version}/client.js"></script>

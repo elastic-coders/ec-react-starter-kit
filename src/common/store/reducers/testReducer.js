@@ -4,14 +4,13 @@ import { fetchThings, fetchThingsSuccess } from '../actions';
 const initialState = { thingsFetched: 'none', loading: false };
 
 export default handleActions({
-  [fetchThings]: (state, action) => ({
+  [fetchThings]: state => ({
     ...state,
     loading: true,
   }),
   [fetchThingsSuccess]: (state, action) => ({
     ...state,
     loading: false,
-    thingsFetched: action.payload
-  })
-
+    thingsFetched: action.payload,
+  }),
 }, initialState);

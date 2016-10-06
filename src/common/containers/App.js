@@ -1,5 +1,5 @@
 import React, { PureComponent, PropTypes as T } from 'react';
-import { Link } from 'react-router'
+import { Link, locationShape } from 'react-router';
 import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
 
@@ -9,25 +9,34 @@ import { fetchThings } from '../store/actions';
 
 @connect(state => ({
   things: state.test.thingsFetched,
-  loading: state.test.loading
+  loading: state.test.loading,
 }), {
   onFetchThings: fetchThings,
   changePage: push,
 })
 export default class App extends PureComponent {
   static propTypes = {
+    route: locationShape.isRequired,
+    children: T.element.isRequired,
     things: T.string,
     loading: T.bool,
     onFetchThings: T.func,
     changePage: T.func,
   };
 
+  logout = () => {
+    // destroys the session data
+    this.props.route.auth.logout();
+    // redirects to login page
+    this.props.changePage('/login');
+  }
+
   render() {
     let children = null;
     if (this.props.children) {
       children = React.cloneElement(this.props.children, {
-        auth: this.props.route.auth // sends auth instance from route to children
-      })
+        auth: this.props.route.auth, // sends auth instance from route to children
+      });
     }
 
     return (
@@ -45,18 +54,11 @@ export default class App extends PureComponent {
         </div>
         <div>
           {this.props.route && this.props.route.auth.loggedIn() && (
-            <button onClick={this.logout.bind(this)}>Logout</button>
+            <button onClick={this.logout}>Logout</button>
           )}
         </div>
         {children}
       </div>
     );
-  }
-
-  logout() {
-    // destroys the session data
-    this.props.route.auth.logout();
-    // redirects to login page
-    this.props.changePage('/login');
   }
 }

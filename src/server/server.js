@@ -5,9 +5,10 @@ import url from 'url';
 import express from 'express';
 import morgan from 'morgan';
 import compression from 'compression';
+import auth from 'http-auth';
 
-import {version} from '../../package.json';
-import indexTemplate from './index.html.js';
+import { version } from '../../package.json';
+import indexTemplate from './index.html';
 
 const server = express();
 
@@ -42,9 +43,10 @@ server.use((req, res, next) => {
 if (process.env.FORCE_HTTPS === '1') {
   server.use((req, res, next) => {
     if (!req.secure) {
-      return res.redirect(301, `https://${req.hostname}${req.url}`);
+      res.redirect(301, `https://${req.hostname}${req.url}`);
+    } else {
+      next();
     }
-    next();
   });
 }
 
@@ -84,7 +86,7 @@ server.use('*', (req, res) => {
 });
 
 server.listen(server.get('port'), () => {
-  console.log(colors.green('🌍  Http server running http://0.0.0.0:' + server.get('port'))); // eslint-disable-line no-console
+  console.log(colors.green(`🌍  Http server running http://0.0.0.0:${server.get('port')}`)); // eslint-disable-line no-console
   if (process.send) {
     process.send('online');
   }

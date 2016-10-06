@@ -10,7 +10,7 @@ export default (auth) => {
     if (auth.loggedIn()) {
       callback();
     } else {
-      auth.login(nextState.location.pathname).catch(err => {
+      auth.login(nextState.location.pathname).catch((err) => {
         replace({ pathname: '/login' });
         callback(err);
       });

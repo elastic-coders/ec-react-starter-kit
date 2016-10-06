@@ -15,13 +15,17 @@ export default (initialState, history) => {
   )(createStore);
   const store = create(rootReducer, initialState);
 
+  /* eslint-disable */
   // Enable Webpack hot module replacement for reducers
+  // TODO this should be handled somewhere else, not in the production code
   if (module.hot) {
     module.hot.accept('./reducers/index', () => {
       const nextRootReducer = require('./reducers/index');
+
       store.replaceReducer(nextRootReducer);
     });
   }
+  /* eslint-enable */
 
   return store;
 };
