@@ -1,6 +1,7 @@
 const webpack = require('webpack');
 const path = require('path');
 const baseConfig = require('./webpack.config.js');
+
 const src = path.join(__dirname, './src');
 
 const client = Object.assign({}, baseConfig[0], {
@@ -9,11 +10,10 @@ const client = Object.assign({}, baseConfig[0], {
     './src/client/client',
   ],
   devtool: 'cheap-module-source-map',
-  plugins: [
+  plugins: baseConfig[0].plugins.slice(1).concat([
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('production'),
     }),
-    baseConfig[0].vendorsChunkPlugin,
     new webpack.optimize.UglifyJsPlugin({
       minimize: true,
       comments: false,
@@ -21,20 +21,19 @@ const client = Object.assign({}, baseConfig[0], {
       compress: { warnings: false },
     }),
     new webpack.optimize.AggressiveMergingPlugin(),
-  ],
+  ]),
   module: {
-    loaders: [
+    loaders: baseConfig[0].module.loaders.slice(1).concat([
       {
-        test: /\.js$/,
+        test: /\.css$/,
         include: [src],
-        loader: 'babel',
+        loaders: [
+          'style',
+          'css?modules&importLoaders=1&localIdentName=[name]--[local]--[hash:base64:5]',
+          'postcss',
+        ],
       },
-      {
-        test: /\.css$/, // Might need to exclude bootstrap
-        include: [src],
-        loader: 'style-loader!css-loader?modules&importLoaders=1&minimize!postcss-loader',
-      }
-    ],
+    ]),
   },
 });
 

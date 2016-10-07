@@ -5,17 +5,6 @@ const src = path.join(__dirname, './src');
 const dist = path.join(__dirname, './dist');
 const distPublic = path.join(__dirname, './dist/public');
 
-const vendorsChunkPlugin = new webpack.optimize.CommonsChunkPlugin({
-  name: 'vendors',
-  filename: 'vendors.js',
-  minChunks: (m) => {
-    if (typeof m.userRequest !== 'string') {
-      return false;
-    }
-    return m.userRequest.indexOf(/node_modules/) >= 0;
-  },
-});
-
 const client = {
   entry: [
     'webpack-dev-server/client?http://localhost:9000',
@@ -31,25 +20,37 @@ const client = {
   output: {
     path: distPublic,
     filename: 'client.js',
-    publicPath: '/public/'
+    publicPath: '/public/',
   },
-  vendorsChunkPlugin,
   plugins: [
-    vendorsChunkPlugin,
     new webpack.HotModuleReplacementPlugin(),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'vendors',
+      filename: 'vendors.js',
+      minChunks: (m) => {
+        if (typeof m.userRequest !== 'string') {
+          return false;
+        }
+        return m.userRequest.indexOf(/node_modules/) >= 0;
+      },
+    }),
   ],
   module: {
     loaders: [
+      {
+        test: /\.css$/,
+        include: [src],
+        loaders: [
+          'style?sourceMap',
+          'css?modules&importLoaders=1&localIdentName=[name]--[local]--[hash:base64:5]',
+          'postcss',
+        ],
+      },
       {
         test: /\.js$/,
         include: [src],
         loaders: ['babel'],
       },
-      {
-        test: /\.css$/, // Might need to exclude bootstrap
-        include: [src],
-        loader: 'style-loader!css-loader?modules&importLoaders=1&sourceMap&localIdentName=[name]--[local]--[hash:base64:5]!postcss-loader',
-      }
     ],
   },
   postcss: [
