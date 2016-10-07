@@ -1,9 +1,10 @@
 import React, { PureComponent, PropTypes as T } from 'react';
-import { Link, locationShape } from 'react-router';
+import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
 
 import styles from './App.css';
+import { AuthService } from '../services';
 
 import { fetchThings } from '../store/actions';
 
@@ -16,8 +17,8 @@ import { fetchThings } from '../store/actions';
 })
 export default class App extends PureComponent {
   static propTypes = {
-    route: locationShape.isRequired,
-    children: T.element.isRequired,
+    route: T.shape({ auth: T.instanceOf(AuthService).isRequired }).isRequired,
+    children: T.element,
     things: T.string,
     loading: T.bool,
     onFetchThings: T.func,
